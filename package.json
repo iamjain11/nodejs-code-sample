@@ -1,0 +1,29 @@
+{
+  "name": "nodejs-code-sample",
+  "version": "1.0.0",
+  "description": "sample nodejs codes for project basic need",
+  "main": "node.express.download.app.js",
+  "scripts": {
+    "test": "node node.express.download.app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamjain11/nodejs-code-sample.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "download"
+  ],
+  "author": "Vivek Jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamjain11/nodejs-code-sample/issues"
+  },
+  "homepage": "https://github.com/iamjain11/nodejs-code-sample#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "express": "^4.16.4"
+  }
+}
