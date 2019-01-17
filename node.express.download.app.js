@@ -6,6 +6,7 @@ var compress = require('compression');
 var bodyParser = require('body-parser');
 var path = require('path');
 var stream = require("stream")
+var mime = require('mime');
 var app = express();
 app.set('port', 9999);
 app.use(bodyParser.json({ limit: '1mb' }));
@@ -66,6 +67,21 @@ app.get('/read-file-from-dir', function (req, res) {
 
 app.get('/read-text-as-file', function (req, res) {
     readApp(req, res)
+});
+
+
+app.get('/download', function(req, res){
+
+  var file = __dirname + '/data/sample_file.txt';
+
+  var filename = path.basename(file);
+  var mimetype = mime.lookup(file);
+
+  res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+  res.setHeader('Content-type', mimetype);
+
+  var filestream = fs.createReadStream(file);
+  filestream.pipe(res);
 });
 
 var server = app.listen(app.get('port'), function () {
