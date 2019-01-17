@@ -70,18 +70,23 @@ app.get('/read-text-as-file', function (req, res) {
 });
 
 
-app.get('/download', function(req, res){
+app.get('/download', function (req, res) {
 
-  var file = __dirname + '/data/sample_file.txt';
+    var file = __dirname + '/data/sample_file.txt';
 
-  var filename = path.basename(file);
-  var mimetype = mime.lookup(file);
+    var filename = path.basename(file);
+    var mimetype = mime.lookup(file);
 
-  res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-  res.setHeader('Content-type', mimetype);
+    res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+    res.setHeader('Content-type', mimetype);
 
-  var filestream = fs.createReadStream(file);
-  filestream.pipe(res);
+    var filestream = fs.createReadStream(file);
+    filestream.pipe(res);
+});
+
+app.get('/express-download', function (req, res) {
+    var file = __dirname + '/data/sample_file.txt';
+    res.download(file);
 });
 
 var server = app.listen(app.get('port'), function () {
